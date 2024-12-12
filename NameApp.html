@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  <title>Name Checker App</title>
+  <style>
+    *{font-size: 40px;}
+    body{background-color: azure;}
+  </style>
+</head>
+<body>
+  <center>
+    <h1>Name App</h1>
+    <form onsubmit="check()">
+
+      <input type="text"  id="name" placeholder="enter your name">
+
+      <br/><br/>
+
+      <input type="submit" value="Greet">
+
+    </form>
+    <h2 id="msg"></h2>
+
+    <script>
+      function check(){
+        event.preventDefault();
+        let name=document.getElementById("name");
+        let msg=document.getElementById("msg");
+        if (name.value==="")
+        {
+          alert("name is empty");
+          msg.innerHTML="";
+          string.focus();
+          return;
+        }
+        if(name.value.trim()===""){
+          alert("name cannot contain blank spaces")
+          name.value="";
+          msg.innerHTML="";
+          name.focus();
+          return;
+        }
+        if(!name.value.match(/^[A-Za-z ]+$/)){
+          alert("name should contain only alphabets")
+          name.value="";
+          msg.innerHTML="";
+          name.focus();
+          return;
+        }
+        let userName = name.value.trim();
+        let currentHour = new Date().getHours();
+        let greeting = "";
+
+        if (currentHour < 12) {
+          greeting = `Good Morning, ${userName}!`;
+        } else if (currentHour < 18) {
+          greeting = `Good Afternoon, ${userName}!`;
+        } else {
+          greeting = `Good Evening, ${userName}!`;
+        }
+
+        msg.innerHTML = greeting;
+      
+      }
+
+    </script>
+  </center>
+</body>
+</html>
